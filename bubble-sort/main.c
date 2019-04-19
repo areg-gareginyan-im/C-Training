@@ -1,32 +1,36 @@
 #include <stdio.h>
 
-void bubbleSort(double arr[], int len);
+/**
+ * Sorts the specified array using Bubble sort algorithm
+**/
+void bubbleSort(int *arr, int len);
 
 int main()
 {
-  double numbers[] = {-2.65, 4.0, -3, 2.65, 2.64, -2};
+  int numbers[] = {65, 4, -3, 5, 2, -2};
+  unsigned int len = sizeof(numbers) / sizeof(numbers[0]);
 
-  int len = (int) sizeof(numbers) / sizeof(numbers[0]);
-
-  bubbleSort(numbers, len);
-
-  for (int i = 0; i < len; i++)
+  bubbleSort(&numbers, len);
+  int i;
+  for (i = 0; i < len; ++i)
   {
-    printf("index: %d, number: %f\n", i, numbers[i]);
+    printf("index: %d, number: %d\n", i, numbers[i]);
   }
 
   return 0;
 }
 
-void bubbleSort(double arr[], int len)
+void bubbleSort(int *arr, int len)
 {
-  double tmp;
-  for (int j = 0; j < len - 1; j++)
+  int tmp;
+  int i, j;
+
+  for (j = 0; j < len - 1; j++)
   {
-    for (int i = 0; i < len - j - 1; i++)
+    for (i = 0; i < len - j - 1; i++)
     {
       if (arr[i + 1] > arr[i])
-      { // Swipe array elements
+      { /* Swap array elements */
         tmp = arr[i];
         arr[i] = arr[i + 1];
         arr[i + 1] = tmp;
