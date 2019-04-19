@@ -3,26 +3,26 @@
 /**
  * Sorts the specified array using Bubble sort algorithm
 **/
-void bubbleSort(int *arr, int len);
+void bubbleSort(double *arr, int len);
 
 int main()
 {
-  int numbers[] = {65, 4, -3, 5, 2, -2};
+  double numbers[] = {65.156, 4.13, -3.003, 5, 2.55, -3};
   unsigned int len = sizeof(numbers) / sizeof(numbers[0]);
 
   bubbleSort(&numbers, len);
   int i;
   for (i = 0; i < len; ++i)
   {
-    printf("index: %d, number: %d\n", i, numbers[i]);
+    printf("index: %d, value: %lf\n", i, numbers[i]);
   }
 
   return 0;
 }
 
-void bubbleSort(int *arr, int len)
+void bubbleSort(double *arr, int len)
 {
-  int tmp;
+  double tmp;
   int i, j;
 
   for (j = 0; j < len - 1; j++)
