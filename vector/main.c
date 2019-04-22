@@ -2,7 +2,7 @@
 #include "./vector/vector.h"
 
 int main() {
-  struct vector *vct = newVector();
+  vector *vct = newVector();
 
   push(vct, 10.2);
   push(vct, 10.4);
