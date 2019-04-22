@@ -1,15 +1,15 @@
 #ifndef NODE_INCLUDED
 #define NODE_INCLUDED
 
-struct node {
+typedef struct {
   int data;
   struct node *left;
   struct node *right;
-};
+} node;
 
 /**
  * Creates a new node for binary tree
  */
-struct node* newNode(int data);
+node* newNode(int data);
 
 #endif

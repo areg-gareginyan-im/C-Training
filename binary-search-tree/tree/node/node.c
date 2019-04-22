@@ -1,12 +1,9 @@
 #include "node.h"
 #include <stdlib.h>
+#include <stdio.h>
 
-struct node* newNode(int data) {
-  struct node *elem = (struct node*) malloc(sizeof(struct node));
-  if(elem == NULL) {
-    printf("ERROR: Out of memory.");
-    return NULL;
-  }
+node* newNode(int data) {
+  node *elem = (node*) malloc(sizeof(node));
   elem->data = data;
   elem->left = NULL;
   elem->right = NULL;

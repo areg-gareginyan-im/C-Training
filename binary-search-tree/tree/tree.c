@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <stdbool.h>
 
-struct node * put(struct node *elem, int value) {
+node * put(node *elem, int value) {
   /** if no element */
   if(NULL == elem) {
     elem = newNode(value);
@@ -17,7 +17,7 @@ struct node * put(struct node *elem, int value) {
   return elem;
 }
 
-bool find(struct node *elem, int val) {
+bool find(node *elem, int val) {
   if(NULL == elem) return false;
   if(elem->data < val) return find(elem->right, val);
   if(elem->data > val) return find(elem->left, val);
@@ -25,7 +25,7 @@ bool find(struct node *elem, int val) {
   return true;
 }
 
-void print(struct node *root, int space) { 
+void print(node *root, int space) { 
   int i;
   if (root == NULL) 
       return; 
