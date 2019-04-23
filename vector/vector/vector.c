@@ -22,10 +22,10 @@ void push(vector* v, double value) {
 }
 
 void delete(vector* v, unsigned int index) {
-  if(v->size == 0) {
+  if(v->size == 0 || index >= v->size) {
     return;
   }
-  /** TODO: handle functionality */
+  memmove((v->data + index), (v->data + index + 1), (v->size - index + 1) * sizeof(double));
   --v->size;
 }
 

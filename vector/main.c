@@ -13,19 +13,19 @@ int main() {
   push(vct, 7);
   push(vct, 8);
   push(vct, 9);
-  push(vct, 10);
-  push(vct, 11);
-  push(vct, 12);
-  push(vct, 13);
-  push(vct, 14);
+
+  delete(vct, 6);
 
   insertElementAt(vct, 1222.0, 0);
   insertElementAt(vct, 1222.5, 5);
   insertElementAt(vct, 1222.1, 1);
-  insertElementAt(vct, 1222.15, 15);
+
+  delete(vct, 0);
 
   printV(vct);
-  printf("Index of %f: %d\n", 10.0, indexOf(vct, 10));
+
+  printf("Index of %f: %d\n", 1222.5, indexOf(vct, 1222.5));
+
   printf("Press Enter to exit...");
   getchar();
   return 0;
