@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#include <time.h>
 
 vector * newVector() {
   size_t capacity = 10;
@@ -80,6 +81,15 @@ void sort(vector* v) {
         swap((v->data + i), (v->data + j)); 
       }
     }
+  }
+}
+
+void shuffle(vector* v) {
+  size_t i;
+  srand(time(NULL));
+  for(i = 0; i < v->size; ++i) {
+    size_t rIndex = rand() % (v->size - i);
+    swap((v->data + i), (v->data + rIndex));
   }
 }
 

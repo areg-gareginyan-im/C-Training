@@ -59,6 +59,11 @@ void increaseVectorSize(vector* v);
 void sort(vector* v);
 
 /**
+ * Shuffles the vector in pseudo-random order
+ */
+void shuffle(vector* v);
+
+/**
  * Swaps the values of the given pointers
  */
 void swap(double *a, double *b);

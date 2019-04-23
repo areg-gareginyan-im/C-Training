@@ -30,6 +30,10 @@ int main() {
   sort(vct);
   printV(vct);
 
+  printf("Shuffling the vector using Fisher–Yates shuffle Algorithm...");
+  shuffle(vct);
+  printV(vct);
+
   printf("Press Enter to exit...");
   getchar();
   return 0;
