@@ -14,7 +14,7 @@ typedef struct {
 vector * newVector();
 
 /**
- * push a new double item into the vector. Resizes the vector if it's full.
+ * Inserts a new double item into the vector. Resizes the vector if it's full.
  */
 void push(vector* v, double value);
 
@@ -26,11 +26,31 @@ void delete(vector* v, unsigned int index);
 /**
  * Gets the value of the given index from the vector
  */
-double get(vector* v, unsigned int index);
+double* get(vector* v, unsigned int index);
 
 /**
  * Prints the given vector
  */
 void printV(vector* v);
+
+/**
+ * Returns the index of the  given value
+ */
+int indexOf(vector* v, double value);
+
+/**
+ * Inserts the givent element into the vector with the given index 
+ */
+void insertElementAt(vector* v, double value, unsigned int index);
+
+/**
+ * Clears the vector
+ */
+void clear(vector* v);
+
+/**
+ * Increases the vector size
+ */
+void increaseVectorSize(vector* v);
 
 #endif
