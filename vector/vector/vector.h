@@ -16,7 +16,7 @@ vector * newVector();
 /**
  * Inserts a new double item into the vector. Resizes the vector if it's full.
  */
-void push(vector* v, double value);
+void insert(vector* v, double value);
 
 /**
  * Deletes the item of the given index from the given vector
@@ -52,5 +52,15 @@ void clear(vector* v);
  * Increases the vector size
  */
 void increaseVectorSize(vector* v);
+
+/**
+ * Sorts the vector using TODO algorithm
+ */
+void sort(vector* v);
+
+/**
+ * Swaps the values of the given pointers
+ */
+void swap(double *a, double *b);
 
 #endif

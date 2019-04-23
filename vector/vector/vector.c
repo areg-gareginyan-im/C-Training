@@ -13,7 +13,7 @@ vector * newVector() {
   return v;
 }
 
-void push(vector* v, double value) {
+void insert(vector* v, double value) {
   if(v->size == v->capacity) {
     increaseVectorSize(v);
   }
@@ -38,9 +38,11 @@ double* get(vector* v, unsigned int index) {
 
 void printV(vector* v) {
   int i;
+  printf("\n----- VECTOR DATA -----\n");
   for(i = 0; i < v->size; ++i) {
-    printf("%d element value:\t%f\n", i, v->data[i]);
+    printf("[%d] -> : %f\n", i, v->data[i]);
   }
+  printf("-----------------------\n");
 }
 
 int indexOf(vector* v, double value) {
@@ -70,7 +72,24 @@ void clear(vector *v) {
   v = newVector();
 }
 
+void sort(vector* v) {
+  int i, j;
+  for(i = 0; i < v->size - 1; ++i) {
+    for(j = i; j < v->size; ++j) {
+      if(*(v->data + i) > *(v->data + j)) {
+        swap((v->data + i), (v->data + j)); 
+      }
+    }
+  }
+}
+
+void swap(double *a, double *b) {
+  double buf = *a;
+  *a = *b;
+  *b = buf;
+}
+
 void increaseVectorSize(vector *v) {
-    v->capacity *= 2;
-    v->data = (double*) realloc(v->data, v->capacity * sizeof(v->data));
+  v->capacity *= 2;
+  v->data = (double*) realloc(v->data, v->capacity * sizeof(v->data));
 }
