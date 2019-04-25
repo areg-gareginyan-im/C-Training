@@ -38,4 +38,8 @@ node shuffleN(node list, int n);
  */
 node reverse(node list);
 
+node initialize(node list, int n);
+
+long getMicrotime();
+
 #endif

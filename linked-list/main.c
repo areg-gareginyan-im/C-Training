@@ -4,20 +4,17 @@
 
 int main() {
   node head = newLinkedList();
-  head->data = 40;
-  add(head, 2);
-  add(head, 23);
-  add(head, 14);
-  add(head, 5);
-  add(head, 6);
-
-  printf("HEAD DATA: %f\n", head->data);
-  printf("SECOND DATA: %f\n", head->next->data);
-
+  long startTime = getMicrotime();
+    printf("Start to push data into Linked List...\n");
+  head = initialize(head, 10);
+  printf("\nInitialization time of 1M nodes in microseconds: %lu\n", getMicrotime() - startTime);
+  startTime = getMicrotime();
   print(head);
   head = shuffleN(head, 2);
   print(head);
+  printf("\nShuffling takes %lu microseconds for 1M nodes and n = %d\n", getMicrotime() - startTime, 20);
+  /*print(head);
   head = reverse(head);
-  print(head);
+  print(head);*/
   return 0;
 }

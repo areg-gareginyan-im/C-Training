@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <sys/time.h>
 #include "list.h"
 
 node newLinkedList() {
@@ -13,6 +14,21 @@ node newNode(double value) {
   elem->next = NULL;
   elem->data = value;
   return elem;
+}
+
+void push(node* head_ref, double val) {
+  node new_node = (node) malloc(sizeof(node));
+  new_node->data  = val;
+  new_node->next = *(head_ref);
+  (*head_ref) = new_node;
+}
+
+node initialize(node list, int n) {
+  size_t i;
+  for (i = n; i > 0; i--) {
+    push(&list, i);
+  }
+  return list;
 }
 
 node add(node head, double value) {
@@ -37,11 +53,11 @@ node addAt(node head, size_t index, double value) {
 void print(node head) {
   node list = head;
   while(NULL != list) {
-    printf("%f%s", list->data, NULL != list->next ? "->" : "\n");
+    printf("%d%s", (int) list->data, NULL != list->next ? "->" : "\n\n");
     list = list->next;
   }
 }
-
+/*
 node shuffleN(node list, int n) {
   size_t i, j;
   node elem;
@@ -62,6 +78,33 @@ node shuffleN(node list, int n) {
   }
   return newList;
 }
+*/
+node shuffleN(node list, int n) {
+    node elem;
+    node *lists = newLinkedList();
+    /** FIXME: 'tempLists' should be change while iteration but 'lists' should be pointed on the first items */
+    node *tempLists = lists;
+    size_t i = 1;
+    for(elem = list->next; NULL != elem; elem = elem->next) {
+      if(i <= n) {
+         (*(lists + i)) = newNode(elem->data);
+         ++i;
+         continue;
+      }
+      int j = i%n == 0 ? n : i%n;
+      (*(tempLists + j))->next = newNode(elem->data);
+      (*(tempLists + j)) = (*(tempLists + j))->next;
+      ++i;
+    }
+
+    (*(lists + 0)) = newNode(list->data);
+    (*(lists + 0))->next = (*(lists + 1));
+
+    for(i = 1; i < n; ++i) {
+      *(tempLists + i) = *(lists + i + 1);
+    }
+    return (*lists);
+}
 
 node reverse(node list) {
   node newList = NULL;
@@ -73,4 +116,10 @@ node reverse(node list) {
     newList = elem;
   }
   return newList;
+}
+
+long getMicrotime(){
+	struct timeval currentTime;
+	gettimeofday(&currentTime, NULL);
+	return currentTime.tv_sec * (int)1e6 + currentTime.tv_usec;
 }
