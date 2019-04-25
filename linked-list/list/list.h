@@ -33,4 +33,9 @@ void print(node head);
  */
 node shuffleN(node list, int n);
 
+/**
+ * Reverses the linked list
+ */
+node reverse(node list);
+
 #endif

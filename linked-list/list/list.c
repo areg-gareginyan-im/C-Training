@@ -62,3 +62,15 @@ node shuffleN(node list, int n) {
   }
   return newList;
 }
+
+node reverse(node list) {
+  node newList = NULL;
+  node elem;
+
+  for(;NULL != list; list = list->next) {
+    elem = newNode(list->data);
+    elem->next = newList;
+    newList = elem;
+  }
+  return newList;
+}

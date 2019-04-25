@@ -15,9 +15,9 @@ int main() {
   printf("SECOND DATA: %f\n", head->next->data);
 
   print(head);
-  head = shuffleN(head, 4);
+  head = shuffleN(head, 2);
   print(head);
-  /**sort(head); */
-  /**print(head); */
+  head = reverse(head);
+  print(head);
   return 0;
 }
