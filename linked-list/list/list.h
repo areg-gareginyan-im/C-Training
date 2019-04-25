@@ -23,8 +23,14 @@ node add(node list, double value);
  */
 node addAt(node head, size_t index, double value);
 
+/**
+ * Prints the linked list 
+ */
 void print(node head);
 
+/**
+ * Shuffles the linked list
+ */
 node shuffleN(node list, int n);
 
 #endif

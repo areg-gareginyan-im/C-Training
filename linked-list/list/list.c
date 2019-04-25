@@ -45,7 +45,7 @@ void print(node head) {
 node shuffleN(node list, int n) {
   size_t i, j;
   node elem;
-  if(n < 1) {
+  if(n <= 1) {
     return list;
   }
   node newList = newNode(list->data);
