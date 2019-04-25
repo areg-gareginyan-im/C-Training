@@ -30,9 +30,35 @@ node add(node head, double value) {
 }
 
 node addAt(node head, size_t index, double value) {
-  //!TODO Implement function
+  /**!TODO Implement function */
+  return head;
 }
 
-print() {
-  //!TODO Implement function
+void print(node head) {
+  node list = head;
+  while(NULL != list) {
+    printf("%f%s", list->data, NULL != list->next ? "->" : "\n");
+    list = list->next;
+  }
+}
+
+node shuffleN(node list, int n) {
+  size_t i, j;
+  node elem;
+  if(n < 1) {
+    return list;
+  }
+  node newList = newNode(list->data);
+  node head = newList;
+  for(i = 1; i <= n; ++i) {
+    j = 1;
+    for(elem = list; NULL != elem; elem = elem->next) {
+      if((i == j && 1 != i) || (j > n && j%n == i) || (i == n && j%n == 0)) {
+        head->next = newNode(elem->data);
+        head = head->next;
+      }
+      ++j;
+    }
+  }
+  return newList;
 }
