@@ -2,7 +2,7 @@
 #define LIST_INCLUDED
 
 struct LinkedList {
-  double data;
+  int data;
   struct LinkedList *next;
 };
 
@@ -16,12 +16,12 @@ node newLinkedList();
 /**
  * Appends the specified value to the end of the list
  */
-node add(node list, double value);
+node add(node list, int value);
 
 /**
  * Appends the specified value in the element which has the specified index
  */
-node addAt(node head, size_t index, double value);
+node addAt(node head, size_t index, int value);
 
 /**
  * Prints the linked list 

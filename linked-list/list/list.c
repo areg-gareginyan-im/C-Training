@@ -9,14 +9,14 @@ node newLinkedList() {
   return head;
 }
 
-node newNode(double value) {
+node newNode(int value) {
   node elem = (node) malloc(sizeof(node));
   elem->next = NULL;
   elem->data = value;
   return elem;
 }
 
-void push(node* head_ref, double val) {
+void push(node* head_ref, int val) {
   node new_node = (node) malloc(sizeof(node));
   new_node->data  = val;
   new_node->next = *(head_ref);
@@ -31,7 +31,7 @@ node initialize(node list, int n) {
   return list;
 }
 
-node add(node head, double value) {
+node add(node head, int value) {
   node elem = newNode(value);
   if(NULL == head) {
     head = elem;
@@ -45,7 +45,7 @@ node add(node head, double value) {
   return elem;
 }
 
-node addAt(node head, size_t index, double value) {
+node addAt(node head, size_t index, int value) {
   /**!TODO Implement function */
   return head;
 }
@@ -53,7 +53,7 @@ node addAt(node head, size_t index, double value) {
 void print(node head) {
   node list = head;
   while(NULL != list) {
-    printf("%d%s", (int) list->data, NULL != list->next ? "->" : "\n\n");
+    printf("%d%s", list->data, NULL != list->next ? "->" : "\n\n");
     list = list->next;
   }
 }
@@ -80,30 +80,33 @@ node shuffleN(node list, int n) {
 }
 */
 node shuffleN(node list, int n) {
-    node elem;
-    node *lists = newLinkedList();
-    /** FIXME: 'tempLists' should be change while iteration but 'lists' should be pointed on the first items */
-    node *tempLists = lists;
+    int k = 1;
     size_t i = 1;
-    for(elem = list->next; NULL != elem; elem = elem->next) {
-      if(i <= n) {
-         (*(lists + i)) = newNode(elem->data);
-         ++i;
-         continue;
+    node elem;
+    node *lists = (node*) malloc(sizeof(struct LinkedList));
+    node *tempLists = (node*) malloc(sizeof(struct LinkedList));
+    for(elem = list; NULL != elem; elem = elem->next) {
+      if(k && i <= n) {
+        (*(tempLists + i)) = newNode(elem->data);
+        (*(lists + i)) = (*(tempLists + i));
+        if(n == i) {
+          k = 0;
+        }
+        ++i;
+        continue;
       }
-      int j = i%n == 0 ? n : i%n;
-      (*(tempLists + j))->next = newNode(elem->data);
-      (*(tempLists + j)) = (*(tempLists + j))->next;
+      if(i > n) {
+        i = 1;
+      }
+      (*(tempLists + i))->next = newNode(elem->data);
+      (*(tempLists + i)) = (*(tempLists + i))->next;
       ++i;
     }
-
-    (*(lists + 0)) = newNode(list->data);
-    (*(lists + 0))->next = (*(lists + 1));
-
+    (*(lists + 1))->data = list->data;
     for(i = 1; i < n; ++i) {
-      *(tempLists + i) = *(lists + i + 1);
+      (*(tempLists + i))->next = *(lists + i + 1);
     }
-    return (*lists);
+    return (*(lists + 1));
 }
 
 node reverse(node list) {
