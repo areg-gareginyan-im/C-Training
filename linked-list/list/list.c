@@ -52,11 +52,11 @@ node addAt(node head, size_t index, int value) {
 
 void print(node head) {
   node list = head;
-  while(NULL != list) {
-    printf("%d%s", list->data, NULL != list->next ? "->" : "\n\n");
-    list = list->next;
+  for(node list = head; NULL != list; list = list->next) {
+    printf("%p:%d%s", list, list->data, NULL != list->next ? " -> " : "\n\n");
   }
 }
+
 /*
 node shuffleN(node list, int n) {
   size_t i, j;
