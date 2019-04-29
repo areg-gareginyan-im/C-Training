@@ -39,6 +39,11 @@ node shuffleN(node list, int n);
 node reverse(node list);
 
 /**
+ * Runs reverse N algorithm on the given list with
+ */
+node reverseN(node list, int n);
+
+/**
  * Initializes the list
  */
 node initialize(node list, int n);
