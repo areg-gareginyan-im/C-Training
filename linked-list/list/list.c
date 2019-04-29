@@ -52,7 +52,7 @@ node addAt(node head, size_t index, int value) {
 
 void print(node head) {
   node list = head;
-  for(node list = head; NULL != list; list = list->next) {
+  for(list = head; NULL != list; list = list->next) {
     printf("%p:%d%s", list, list->data, NULL != list->next ? " -> " : "\n\n");
   }
 }
@@ -106,7 +106,7 @@ node shuffleN(node list, int n) {
     for(i = 1; i < n; ++i) {
       (*(tempLists + i))->next = *(lists + i + 1);
     }
-    return (*(lists + 1));
+    return *(lists + 1);
 }
 
 node reverse(node list) {
