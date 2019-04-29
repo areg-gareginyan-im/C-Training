@@ -125,6 +125,9 @@ node reverseN(node list, int n) {
   node first = NULL, newList = NULL;
   node elem, prevLast = NULL, last = NULL;
   int i, k = 1;
+  if(n <= 1) {
+    return list;
+  }
   for(i = 1; NULL != list; list = list->next, ++i) {
     elem = newNode(list->data);
     if(1 == i) {
@@ -144,11 +147,11 @@ node reverseN(node list, int n) {
       elem->next = newList;
     }
     newList = elem;
-    if(NULL == list->next) {
+    if(NULL == list->next && prevLast != NULL) {
         prevLast->next = newList;
     }
   }
-  return first;
+  return (NULL == first) ? newList : first;
 }
 
 long getMicrotime(){
