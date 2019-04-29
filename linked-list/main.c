@@ -3,18 +3,20 @@
 #include "./list/list.h"
 
 int main() {
-  int n = 4;
+  int n = 2;
   node head = newLinkedList();
   long startTime = getMicrotime();
   printf("Start to push data into Linked List...\n");
-  head = initialize(head, 1000000);
+  head = initialize(head, 999999);
   printf("\nInitialization time of 1M nodes in microseconds: %lu\n", getMicrotime() - startTime);
-  /* print(head); */
+  /*print(head);
   startTime = getMicrotime();
   head = shuffleN(head, n);
   printf("\nShuffling takes %lu microseconds for 1M nodes and n = %d\n", getMicrotime() - startTime, n);
-  /*print(head);
-  head = reverse(head);
-  print(head);*/
+  */
+  startTime = getMicrotime();
+  head = reverseN(head, n);
+  printf("\nReversing takes %lu microseconds for 1M nodes and n = %d\n", getMicrotime() - startTime, n);
+  /*print(head);*/
   return 0;
 }

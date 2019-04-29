@@ -121,6 +121,36 @@ node reverse(node list) {
   return newList;
 }
 
+node reverseN(node list, int n) {
+  node first = NULL, newList = NULL;
+  node elem, prevLast = NULL, last = NULL;
+  int i, k = 1;
+  for(i = 1; NULL != list; list = list->next, ++i) {
+    elem = newNode(list->data);
+    if(1 == i) {
+      prevLast = last;
+      last = elem;
+    } else if(n == i) {
+      if(k) {
+        first = elem;
+        first->next = newList;
+        k = 0;
+      } else {
+        prevLast->next = elem;
+        elem->next = newList;
+      }
+      i = 0;
+    } else {
+      elem->next = newList;
+    }
+    newList = elem;
+    if(NULL == list->next) {
+        prevLast->next = newList;
+    }
+  }
+  return first;
+}
+
 long getMicrotime(){
 	struct timeval currentTime;
 	gettimeofday(&currentTime, NULL);
