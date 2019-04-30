@@ -11,6 +11,7 @@ node newLinkedList() {
 }
 
 node newNode(int value) {
+	// NOTE - malloc by obj size not by pointer
   node elem = (node) malloc(sizeof(node));
   elem->next = NULL;
   elem->data = value;
@@ -92,6 +93,8 @@ node shuffleN(node list, int n) {
     node *tempLists = (node*) malloc(sizeof(struct LinkedList));
     for(elem = list; NULL != elem; elem = elem->next) {
       if(k && i <= n) {
+	      // NOTE - are we sure that all nodes are locate sequentially (like in array?)
+		// no dynamic memory allocation supports that
         (*(tempLists + i)) = newNode(elem->data);
         (*(lists + i)) = (*(tempLists + i));
         if(n == i) {
