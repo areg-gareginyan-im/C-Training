@@ -13,9 +13,12 @@ int main() {
   startTime = getMicrotime();
   head = shuffleN(head, n);
   printf("\nShuffling takes %lu microseconds for 1M nodes and n = %d\n", getMicrotime() - startTime, n);
-  */
   startTime = getMicrotime();
   head = reverseN(head, n);
   printf("\nReversing takes %lu microseconds for 1M nodes and n = %d\n", getMicrotime() - startTime, n);
+  */
+  startTime = getMicrotime();
+  sort(&head);
+  printf("\nSorting with Merge Sort algorithm takes %lu microseconds for 1M nodes\n", getMicrotime() - startTime, n);
   return 0;
 }

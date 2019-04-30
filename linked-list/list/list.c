@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <sys/time.h>
+#include <time.h>
 #include "list.h"
 
 node newLinkedList() {
@@ -23,10 +24,10 @@ void push(node* head_ref, int val) {
   (*head_ref) = new_node;
 }
 
-node initialize(node list, int n) {
-  size_t i;
-  for (i = n; i > 0; i--) {
-    push(&list, i);
+node initialize(node list, unsigned int n) {
+  srand(time(NULL));
+  while (n--) {
+    push(&list, rand() % 1000);
   }
   return list;
 }
@@ -52,6 +53,10 @@ node addAt(node head, size_t index, int value) {
 
 void print(node head) {
   node list = head;
+  if(list == NULL) {
+    printf("IS NULL\n");
+    return;
+  }
   for(list = head; NULL != list; list = list->next) {
     printf("%p:%d%s", list, list->data, NULL != list->next ? " -> " : "\n\n");
   }
@@ -152,6 +157,70 @@ node reverseN(node list, int n) {
     }
   }
   return (NULL == first) ? newList : first;
+}
+
+void sort(node *head) {
+  *head = mergeSort(*head);
+}
+
+node mergeSort(node list) {
+  if(NULL == list || NULL == list->next) {
+    return list;
+  }
+  node middle = getMiddle(list);
+  node nextOfMiddle = middle->next;
+  middle->next = NULL;
+
+  node left = mergeSort(list);
+  node right = mergeSort(nextOfMiddle);
+
+  node sortedList = mergeLists(left, right);
+
+  return sortedList;
+}
+
+node mergeLists(node leftStart, node rightStart) {
+  node mergedHead = NULL, merged = NULL;
+  node temp = NULL;
+  while(leftStart != NULL && rightStart != NULL) {
+    if(leftStart->data < rightStart->data) {
+      temp = newNode(leftStart->data);
+      leftStart = leftStart->next;
+    } else {
+      temp = newNode(rightStart->data);
+      rightStart = rightStart->next;
+    }
+    if(NULL == mergedHead) {
+      mergedHead = temp;
+    } else {
+      merged->next = temp;
+    }
+    merged = temp;
+  }
+  if(leftStart != NULL) {
+    merged->next = leftStart;
+  } else if(rightStart != NULL) {
+    merged->next = rightStart;
+  }
+  return mergedHead;
+}
+
+node getMiddle(node list) {
+  if(NULL == list || NULL == list->next) {
+    return list;
+  }
+  int i = 0, middleI = 1;
+  node middle = NULL;
+  node temp = list;
+  while(temp != NULL) {
+    ++i;
+    if(i/2 == middleI) {
+      middle = (NULL == middle) ? list : middle->next;
+      ++middleI;
+    }
+    temp = temp->next;
+  }
+  return middle;
 }
 
 long getMicrotime(){
