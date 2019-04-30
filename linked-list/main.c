@@ -19,6 +19,6 @@ int main() {
   */
   startTime = getMicrotime();
   sort(&head);
-  printf("\nSorting with Merge Sort algorithm takes %lu microseconds for 1M nodes\n", getMicrotime() - startTime, n);
+  printf("\nSorting with Merge Sort algorithm takes %lu microseconds for 1M nodes\n", getMicrotime() - startTime);
   return 0;
 }
