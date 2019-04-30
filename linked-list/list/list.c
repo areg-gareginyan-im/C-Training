@@ -184,10 +184,10 @@ node mergeLists(node leftStart, node rightStart) {
   node temp = NULL;
   while(leftStart != NULL && rightStart != NULL) {
     if(leftStart->data < rightStart->data) {
-      temp = newNode(leftStart->data);
+      temp = leftStart;
       leftStart = leftStart->next;
     } else {
-      temp = newNode(rightStart->data);
+      temp = rightStart;
       rightStart = rightStart->next;
     }
     if(NULL == mergedHead) {
